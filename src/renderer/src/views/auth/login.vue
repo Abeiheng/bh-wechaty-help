@@ -2,6 +2,6 @@
 
 <template>
   <main>
-    <div>123456789</div>
+    <div>获取到了指纹</div>
   </main>
 </template>
