@@ -1,6 +1,6 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { electronApp, is, optimizer } from '@electron-toolkit/utils'
+import { app, BrowserWindow, shell } from 'electron'
 import { join } from 'path'
-import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { createTray } from './tray'
 
@@ -9,19 +9,11 @@ function createWindow(): BrowserWindow {
     width: 800,
     height: 500,
     show: false,
-<<<<<<< HEAD
     alwaysOnTop: false,
     resizable: false,
     frame: false,
     autoHideMenuBar: false,
     skipTaskbar: false,
-=======
-    alwaysOnTop: true,
-    resizable: false,
-    frame: false,
-    autoHideMenuBar: true,
-    skipTaskbar: true,
->>>>>>> 766feb282a2d5c8c69d5ff637d6f7ce894d7f883
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),

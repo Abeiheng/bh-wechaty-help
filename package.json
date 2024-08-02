@@ -23,19 +23,12 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
-<<<<<<< HEAD
     "@fingerprintjs/fingerprintjs": "^4.4.3",
-=======
->>>>>>> 766feb282a2d5c8c69d5ff637d6f7ce894d7f883
     "@icon-park/vue": "^1.4.2",
     "axios": "^1.7.2",
     "dayjs": "^1.11.12",
     "electron-updater": "^6.1.7",
     "element-plus": "^2.7.8",
-<<<<<<< HEAD
-    "fingerprintjs": "^0.5.3",
-=======
->>>>>>> 766feb282a2d5c8c69d5ff637d6f7ce894d7f883
     "pinia": "^2.2.0",
     "pinia-plugin-persistedstate": "^3.2.1",
     "vue-router": "4"
