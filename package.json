@@ -25,6 +25,7 @@
     "@electron-toolkit/utils": "^3.0.0",
     "@fingerprintjs/fingerprintjs": "^4.4.3",
     "@icon-park/vue": "^1.4.2",
+    "@icon-park/vue-next": "^1.4.2",
     "axios": "^1.7.2",
     "dayjs": "^1.11.12",
     "electron-updater": "^6.1.7",

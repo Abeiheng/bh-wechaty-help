@@ -6,10 +6,10 @@ import { createTray } from './tray'
 
 function createWindow(): BrowserWindow {
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 500,
+    width: 1400,
+    height: 1000,
     show: false,
-    alwaysOnTop: false,
+    alwaysOnTop: true,
     resizable: false,
     frame: false,
     autoHideMenuBar: false,

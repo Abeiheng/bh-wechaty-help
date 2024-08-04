@@ -17,6 +17,9 @@ dependencies:
   '@icon-park/vue':
     specifier: ^1.4.2
     version: 1.4.2(vue@3.4.35)
+  '@icon-park/vue-next':
+    specifier: ^1.4.2
+    version: 1.4.2(vue@3.4.35)
   axios:
     specifier: ^1.7.2
     version: 1.7.3
@@ -728,6 +731,15 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
     dev: true
+
+  /@icon-park/vue-next@1.4.2(vue@3.4.35):
+    resolution: {integrity: sha512-+QklF255wkfBOabY+xw6FAI0Bwln/RhdwCunNy/9sKdKuChtaU67QZqU67KGAvZUTeeBgsL+yaHHxqfQeGZXEQ==}
+    engines: {node: '>= 8.0.0', npm: '>= 5.0.0'}
+    peerDependencies:
+      vue: 3.x
+    dependencies:
+      vue: 3.4.35(typescript@5.5.4)
+    dev: false
 
   /@icon-park/vue@1.4.2(vue@3.4.35):
     resolution: {integrity: sha512-YXXC53R0hjM76B2M4ANRI0m2bQB1cifUW+YXxQfGofITP6gr+pSMafBz/vzECYSkW3zZklm2mVuqQj4RAZGR2Q==}

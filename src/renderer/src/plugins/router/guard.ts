@@ -19,8 +19,6 @@ async function beforeEach(to: RouteLocationNormalized, from: RouteLocationNormal
     const result = await fp.get()
     useStorage().set('fingerprint', result.visitorId)
   }
-
-  if (to.meta.guest && isLogin()) return '/'
 }
 
 //初始应用
