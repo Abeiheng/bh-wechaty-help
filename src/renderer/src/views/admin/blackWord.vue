@@ -13,7 +13,7 @@ const listenType = ref<Array<number>>([])
   <main class="main">
     <section class="section_left">
       <div class="font-bold text-black opacity-80 text-lg">屏蔽检测方案列表</div>
-      <div class="overflow-y-auto h-[780px] flex flex-col gap-5 functonList">
+      <div class="overflow-y-auto h-[680px] flex flex-col gap-5 functonList">
         <div
           class="rounded-lg shadow-md p-3 bg-zinc-100 flex justify-between items-center"
           v-for="(item, index) of 40"

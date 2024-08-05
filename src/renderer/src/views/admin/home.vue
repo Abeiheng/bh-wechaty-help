@@ -37,7 +37,7 @@
             <span class="text-xl text-gray-700">控制面板</span>
           </div>
           <div class="flex gap-4 bg-zinc-200 rounded-lg p-4 border-soild">
-            <img src="@renderer/public/logo.jpg" class="w-20 h-20 rounded-full" draggable="false" />
+            <img src="@renderer/assets/logo.jpg" class="w-20 h-20 rounded-full" draggable="false" />
             <div class="flex flex-col justify-around">
               <span>用户名：微信助手</span>
               <span>登录时间：2024-02-12 12:23:34</span>
@@ -47,7 +47,7 @@
             class="cursor-pointer text-center py-3 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white">
             登录账号
           </div>
-          <img src="@renderer/public/logo.jpg" class="rounded-lg h-auto"  draggable="false"/>
+          <img src="@renderer/assets/logo.jpg" class="rounded-lg h-[500px]"  draggable="false"/>
         </div>
       </div>
     </section>
@@ -57,7 +57,7 @@
 .main {
   @apply flex;
   section {
-    @apply bg-white rounded-lg flex-1 flex flex-col pt-5 gap-8 px-8;
+    @apply bg-white rounded-lg flex-1 flex flex-col pt-5 gap-6 px-8;
     .title {
       @apply flex justify-center items-center;
       span {

@@ -7,9 +7,9 @@ import { createTray } from './tray'
 function createWindow(): BrowserWindow {
   const mainWindow = new BrowserWindow({
     width: 1400,
-    height: 1000,
+    height: 900,
     show: false,
-    alwaysOnTop: true,
+    alwaysOnTop: false,
     resizable: false,
     frame: false,
     autoHideMenuBar: false,
@@ -17,8 +17,8 @@ function createWindow(): BrowserWindow {
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
-    }
+      sandbox: false,
+    },
   })
 
   mainWindow.on('ready-to-show', () => {
