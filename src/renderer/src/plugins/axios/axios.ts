@@ -1,3 +1,5 @@
+import useStorage from '@renderer/composables/useStorage'
+import { CacheEnum } from '@renderer/enum/CacheEnum'
 import { HttpCodeEnum } from '@renderer/enum/HttpCodeEnum'
 import router from '@renderer/plugins/router'
 import axios, { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
@@ -39,16 +41,16 @@ export default class Axios {
         if (!this.loading && this.options.loading) {
           this.loading = ElLoading.service({
             background: 'rgba(255,255,255,0.1)',
-            fullscreen: true
+            fullscreen: true,
           })
         }
         config.headers.Accept = 'application/json'
-        config.headers.Authorization = `Bearer `
+        config.headers.Authorization = `Bearer ${useStorage().get(CacheEnum.TOKEN_NAME)}`
         return config
       },
       (error: any) => {
         return Promise.reject(error)
-      }
+      },
     )
   }
   private interceptorsResponse() {
@@ -64,7 +66,7 @@ export default class Axios {
             type: 'success',
             message,
             grouping: true,
-            duration: 2000
+            duration: 2000,
           })
         }
 
@@ -79,7 +81,7 @@ export default class Axios {
         }
         this.options = { loading: true, message: true, clearValidateError: true }
         const {
-          response: { status, data }
+          response: { status, data },
         } = error
         const message = data.error ?? data.message
         switch (status) {
@@ -108,7 +110,7 @@ export default class Axios {
             }
         }
         return Promise.reject(error)
-      }
+      },
     )
   }
 }

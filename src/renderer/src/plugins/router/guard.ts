@@ -5,6 +5,7 @@ import useAuth from '@renderer/composables/useAuth'
 import FingerprintJS from '@fingerprintjs/fingerprintjs'
 import useStorage from '@renderer/composables/useStorage'
 let isInit = false
+const { login } = useAuth()
 export default (router: Router) => {
   router.beforeEach(beforeEach)
 }
@@ -14,10 +15,9 @@ async function beforeEach(to: RouteLocationNormalized, from: RouteLocationNormal
   await init()
   const { isLogin } = useAuth()
   if (to.meta.auth && !isLogin()) {
-    ElMessage.success('请登录后操作')
     const fp = await FingerprintJS.load()
     const result = await fp.get()
-    useStorage().set('fingerprint', result.visitorId)
+    await login(result.visitorId)
   }
 }
 
