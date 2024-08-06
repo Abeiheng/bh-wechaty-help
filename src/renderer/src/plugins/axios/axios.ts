@@ -96,7 +96,6 @@ export default class Axios {
             break
           case HttpCodeEnum.UNAUTHORIZED:
             ElMessage({ type: 'error', message: 'Token出现错误' })
-            router.push({ name: 'login' })
             break
           case HttpCodeEnum.UNPROCESSABLE_ENTITY:
             ElMessage({ type: 'error', message: '提交的内容不允许为空' })

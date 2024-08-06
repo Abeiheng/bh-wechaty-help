@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import usePermission from '@renderer/composables/usePermission'
-const { getAllPermissions } = usePermission()
+const { getAllPermissions, userPower, updatePermission } = usePermission()
+const handlePermission = async () => {
+  await updatePermission()
+}
 await getAllPermissions()
 </script>
 
@@ -50,7 +53,45 @@ await getAllPermissions()
           <div class="cursor-pointer text-center py-3 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white">
             登录账号
           </div>
-          <img src="@renderer/assets/logo.jpg" class="rounded-lg h-[500px]" draggable="false" />
+          <!-- <img src="@renderer/assets/logo.jpg" class="rounded-lg h-[500px]" draggable="false" /> -->
+          <div class="bg-zinc-100 shadow-lg rounded-lg p-4 flex flex-col gap-4 h-auto" v-if="userPower">
+            <div class="text-center opacity-80 text-base">权限管理</div>
+            <div class="grid grid-cols-3 gap-4">
+              <div class="flex gap-3 items-center justify-center">
+                <span class="text-sm opacity-80">好友申请</span>
+                <el-switch v-model="userPower.friend" size="small" />
+              </div>
+              <div class="flex gap-3 items-center justify-center">
+                <span class="text-sm opacity-80">个人回复</span>
+                <el-switch v-model="userPower.peopleReply" size="small" />
+              </div>
+              <div class="flex gap-3 items-center justify-center">
+                <span class="text-sm opacity-80">群聊回复</span>
+                <el-switch v-model="userPower.groupReply" size="small" />
+              </div>
+              <div class="flex gap-3 items-center justify-center">
+                <span class="text-sm opacity-80">消息转发</span>
+                <el-switch v-model="userPower.msgShare" size="small" />
+              </div>
+              <div class="flex gap-3 items-center justify-center">
+                <span class="text-sm opacity-80">屏蔽检测</span>
+                <el-switch v-model="userPower.blackWord" size="small" />
+              </div>
+              <div class="flex gap-3 items-center justify-center">
+                <span class="text-sm opacity-80">群发消息</span>
+                <el-switch v-model="userPower.groupMsg" size="small" />
+              </div>
+              <div class="flex gap-3 items-center justify-center">
+                <span class="text-sm opacity-80">定制接口</span>
+                <el-switch v-model="userPower.makeApi" size="small" />
+              </div>
+            </div>
+            <div
+              class="cursor-pointer text-center py-2 rounded-lg bg-[#409EFF] shadow-sm nodrag text-white"
+              @click="handlePermission">
+              修改权限
+            </div>
+          </div>
         </div>
       </div>
     </section>
