@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import usePermission from '@renderer/composables/usePermission'
+const { getAllPermissions } = usePermission()
+await getAllPermissions()
+</script>
 
 <template>
   <main class="main">
@@ -43,11 +47,10 @@
               <span>登录时间：2024-02-12 12:23:34</span>
             </div>
           </div>
-          <div
-            class="cursor-pointer text-center py-3 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white">
+          <div class="cursor-pointer text-center py-3 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white">
             登录账号
           </div>
-          <img src="@renderer/assets/logo.jpg" class="rounded-lg h-[500px]"  draggable="false"/>
+          <img src="@renderer/assets/logo.jpg" class="rounded-lg h-[500px]" draggable="false" />
         </div>
       </div>
     </section>
