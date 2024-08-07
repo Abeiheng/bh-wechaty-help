@@ -19,10 +19,22 @@ interface UserPowerModel {
 interface FriendModel {
   id: number
   planName: string
-  verifyMsg?: string
-  callMsg?: string
+  verifyMsg: string
+  callMsg: string
+  status: boolean
   userId: number
-  User?: UserModel
+  User: UserModel
+}
+interface PeopleReplyModel {
+  id: number
+  planName: string
+  triggerWord: string
+  msgOne: string
+  msgTwo: string
+  msgThree: string
+  status: boolean
+  userId: number
+  User: UserModel
 }
 interface MsgModel {
   message: string

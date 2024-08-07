@@ -1,8 +1,16 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
-import { Dot, CloseOne, EditTwo } from '@icon-park/vue-next'
-
-const friend = reactive({
+import { CloseOne, Dot, EditTwo } from '@icon-park/vue-next'
+import { ElMessage } from 'element-plus';
+import { ref } from 'vue'
+const msgNumber = ref(1)
+const addMsg = () => {
+  if (msgNumber.value < 3) {
+    msgNumber.value++
+  } else {
+    ElMessage({ message: '消息回复最多可以设置3条', type: 'error', duration: 1000 })
+  }
+}
+const friend = ref({
   verify: '',
   salutation: '',
 })
@@ -59,10 +67,25 @@ const friend = reactive({
               type="textarea"
               v-model="friend.salutation"></el-input>
           </el-form-item>
+          <el-form-item label="消息回复">
+            <el-input
+              placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
+              :rows="2"
+              type="textarea"
+              v-model="friend.salutation"></el-input>
+          </el-form-item>
+          <el-form-item label="消息回复">
+            <el-input
+              placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
+              :rows="2"
+              type="textarea"
+              v-model="friend.salutation"></el-input>
+          </el-form-item>
           <el-form-item>
             <div class="flex justify-end flex-1">
               <div
-                class="cursor-pointer text-center py-1 rounded-lg bg-[#e8edf6] shadow-sm nodrag text-gray-600 basis-1/4">
+                class="cursor-pointer text-center py-1 rounded-lg bg-[#e8edf6] shadow-sm nodrag text-gray-600 basis-1/4"
+                @click="addMsg">
                 新增回复
               </div>
             </div>
@@ -80,12 +103,6 @@ const friend = reactive({
             </div>
           </el-form-item>
         </el-form>
-      </div>
-      <div class="tip">
-        <div class="font-bold text-black opacity-80 text-lg">使用说明</div>
-        <p>①：消息回复支持纯文本以及文件，如果回复文件需要输入文件的在线地址如https://example.com/123.png</p>
-        <p>②：本配置监听的是群聊信息，如果需要监听个人信息，请前往个人回复</p>
-        <p>③：如使用本程序出现bug问题，请提交issuse进行提交反馈</p>
       </div>
     </section>
   </main>
@@ -107,12 +124,6 @@ const friend = reactive({
     @apply flex flex-col gap-4 flex-1;
     .config {
       @apply h-max bg-white rounded-lg shadow-lg p-5 flex flex-col gap-5;
-    }
-    .tip {
-      @apply flex-1 bg-white rounded-lg shadow-lg p-5 flex flex-col gap-5;
-      p {
-        @apply text-gray-700 text-sm;
-      }
     }
   }
 }

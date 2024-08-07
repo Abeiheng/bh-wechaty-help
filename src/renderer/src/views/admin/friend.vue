@@ -13,26 +13,26 @@ const handleEdit = async (id: number) => {
 }
 const handleAdd = async () => {
   await createPlan(friendForm.value)
-  friendForm.value = {
-    planName: '',
-    verifyMsg: '',
-    callMsg: '',
-  }
+  handleClear()
 }
 const handleUpdate = async () => {
   await updatePlan()
+  handleClear()
+}
+const handleClear = () => {
   friendForm.value = {
     planName: '',
     verifyMsg: '',
     callMsg: '',
+    status: false,
   }
   isEdit.value = false
-  
 }
 const friendForm = ref({
   planName: '',
   verifyMsg: '',
   callMsg: '',
+  status: false,
 })
 await getAllPlanList()
 </script>
@@ -62,7 +62,7 @@ await getAllPlanList()
     </section>
     <section class="h-max">
       <div class="font-bold text-black opacity-80 text-lg">配置管理</div>
-      <el-form v-if="planInfo&&isEdit">
+      <el-form v-if="planInfo && isEdit">
         <el-form-item label="方案名称">
           <el-input placeholder="请输入方案名称，最好不要重复" v-model="planInfo.planName"></el-input>
         </el-form-item>
@@ -76,9 +76,14 @@ await getAllPlanList()
             type="textarea"
             v-model="planInfo.callMsg"></el-input>
         </el-form-item>
+        <el-form-item label="是否启动">
+          <el-switch v-model="planInfo.status" size="small" />
+        </el-form-item>
         <el-form-item>
           <div class="flex justify-between flex-1">
-            <div class="cursor-pointer text-center py-2 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white basis-1/4">
+            <div
+              class="cursor-pointer text-center py-2 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white basis-1/4"
+              @click="handleClear">
               清空
             </div>
             <div
@@ -103,9 +108,14 @@ await getAllPlanList()
             type="textarea"
             v-model="friendForm.callMsg"></el-input>
         </el-form-item>
+        <el-form-item label="是否启动">
+          <el-switch v-model="friendForm.status" size="small" />
+        </el-form-item>
         <el-form-item>
           <div class="flex justify-between flex-1">
-            <div class="cursor-pointer text-center py-2 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white basis-1/4">
+            <div
+              class="cursor-pointer text-center py-2 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white basis-1/4"
+              @click="handleClear">
               清空
             </div>
             <div
