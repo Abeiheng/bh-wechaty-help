@@ -36,6 +36,39 @@ interface PeopleReplyModel {
   userId: number
   User: UserModel
 }
+interface GroupReplyModel {
+  id: number
+  planName: string
+  listenRoom: string
+  triggerWord: string
+  msgOne: string
+  msgTwo: string
+  msgThree: string
+  status: boolean
+  userId: number
+  User: UserModel
+}
+interface MsgShareModel {
+  id: number
+  planName: string
+  listenRoom: string
+  shareRoom: string
+  status: boolean
+  userId: number
+  User: UserModel
+}
+interface GroupShareModel {
+  id: number
+  planName: string
+  sendRoom: string
+  msgOne: string
+  msgTwo: string
+  msgThree: string
+  gapNum: number
+  status: boolean
+  userId: number
+  User: UserModel
+}
 interface MsgModel {
   message: string
 }

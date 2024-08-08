@@ -1,11 +1,9 @@
-import { ElMessage } from 'element-plus'
-import { RouteLocationNormalized, Router } from 'vue-router'
-import config from '@renderer/config'
-import useAuth from '@renderer/composables/useAuth'
 import FingerprintJS from '@fingerprintjs/fingerprintjs'
-import useStorage from '@renderer/composables/useStorage'
+import useAuth from '@renderer/composables/useAuth'
+import config from '@renderer/config'
+import { RouteLocationNormalized, Router } from 'vue-router'
 let isInit = false
-const { login } = useAuth()
+const { login, isLogin } = useAuth()
 export default (router: Router) => {
   router.beforeEach(beforeEach)
 }
@@ -13,7 +11,6 @@ export default (router: Router) => {
 //路由守卫
 async function beforeEach(to: RouteLocationNormalized, from: RouteLocationNormalized) {
   await init()
-  const { isLogin } = useAuth()
   if (to.meta.auth && !isLogin()) {
     const fp = await FingerprintJS.load()
     const result = await fp.get()

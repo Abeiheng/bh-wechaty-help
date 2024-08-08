@@ -47,7 +47,7 @@ await getAllPlanList()
           v-for="(item, index) of planList"
           :key="index">
           <div class="flex gap-1 items-center">
-            <dot theme="outline" size="18" fill="#67C23A" />
+            <dot theme="outline" size="18" :fill="item.status?'#67C23A':'#F56C6C'" />
             <span class="text-gray-800 opacity-80">{{ item.planName }}</span>
           </div>
           <div class="flex items-center gap-3">
