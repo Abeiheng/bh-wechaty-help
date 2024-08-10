@@ -69,6 +69,16 @@ interface GroupShareModel {
   userId: number
   User: UserModel
 }
+interface BlackWord {
+  id: number
+  planName: string
+  listenRoom: string
+  listenType: Array<string>
+  blackMsg: string
+  status: boolean
+  userId: number
+  User: UserModel
+}
 interface MsgModel {
   message: string
 }
