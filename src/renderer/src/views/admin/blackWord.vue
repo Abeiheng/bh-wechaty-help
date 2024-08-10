@@ -83,12 +83,8 @@ await getAllPlanList()
               <el-checkbox value="手机号" name="type">手机号</el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-          <el-form-item label="黑名单词" v-if="planInfo.listenType.includes('黑名单词')">
-            <el-input
-              placeholder="请输入你监听的黑名单词(使用#分割)"
-              :rows="4"
-              type="textarea"
-              v-model="planInfo.blackMsg"></el-input>
+          <el-form-item label="是否启动">
+            <el-switch v-model="planInfo.status" size="small" />
           </el-form-item>
           <el-form-item>
             <div class="flex justify-between flex-1">
@@ -118,18 +114,13 @@ await getAllPlanList()
           </el-form-item>
           <el-form-item label="监听条件">
             <el-checkbox-group v-model="blackForm.listenType">
-              <el-checkbox value="黑名单词" name="type">黑名单词</el-checkbox>
               <el-checkbox value="二维码" name="type">二维码</el-checkbox>
               <el-checkbox value="链接" name="type">链接</el-checkbox>
               <el-checkbox value="手机号" name="type">手机号</el-checkbox>
             </el-checkbox-group>
           </el-form-item>
-          <el-form-item label="黑名单词" v-if="blackForm.listenType.includes('黑名单词')">
-            <el-input
-              placeholder="请输入你监听的黑名单词(使用#分割)"
-              :rows="4"
-              type="textarea"
-              v-model="blackForm.blackMsg"></el-input>
+          <el-form-item label="是否启动">
+            <el-switch v-model="blackForm.status" size="small" />
           </el-form-item>
           <el-form-item>
             <div class="flex justify-between flex-1">
