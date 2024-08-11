@@ -19,7 +19,7 @@ ipcMain.handle('startBot', async (event: IpcMainInvokeEvent) => {
       win?.webContents.send('wechatyLogin', user)
     })
     .on('error', async (error) => {
-      log.error(`❌程序报错-程序报错-${error}❌`)
+      log.error(`❌程序报错-程序报错-${error.code}❌`)
       if (error.code == 2) {
         botQuit(win)
       }
