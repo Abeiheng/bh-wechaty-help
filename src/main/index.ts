@@ -3,7 +3,10 @@ import { app, BrowserWindow, shell } from 'electron'
 import { join } from 'path'
 import icon from '../../resources/icon.png?asset'
 import { createTray } from './tray'
-
+import './ipcMain'
+import { Conf } from 'electron-conf/main'
+const conf = new Conf()
+conf.registerRendererListener()
 function createWindow(): BrowserWindow {
   const mainWindow = new BrowserWindow({
     width: 1400,

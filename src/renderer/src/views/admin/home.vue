@@ -1,10 +1,45 @@
 <script setup lang="ts">
 import usePermission from '@renderer/composables/usePermission'
-const { getAllPermissions, userPower, updatePermission } = usePermission()
+import useStorage from '@renderer/composables/useStorage'
+import { ElMessage } from 'element-plus'
+import { ref } from 'vue'
+import { ContactSelfInterface } from 'wechaty/impls'
+const loginCode = ref('')
+const storage = useStorage()
+const isLogin = ref(false)
 const handlePermission = async () => {
   await updatePermission()
 }
-await getAllPermissions()
+const wechatyLogin = async () => {
+  await window.api.startBot()
+}
+const checkWechaty = () => {
+  window.api.botStatus()
+}
+const isLoginWechaty = async () => {
+  const wechatyIsLogin = storage.get('wechatyInfo')
+  if (wechatyIsLogin) {
+    isLogin.value = true
+    await getAllPermissions()
+  } else {
+    isLogin.value = false
+  }
+}
+window.api.wechatyScan((_event, qrcode: string) => {
+  console.log(qrcode)
+  if (qrcode) {
+    loginCode.value = qrcode
+  }
+})
+window.api.wechatyLogin(async (_event, userInfo: ContactSelfInterface) => {
+  if (userInfo.id) {
+    await storage.set('wechatyInfo', userInfo)
+    ElMessage({ type: 'success', message: '机器人启动成功', duration: 2000 })
+    await isLoginWechaty()
+  }
+})
+const { getAllPermissions, userPower, updatePermission } = usePermission()
+await isLoginWechaty()
 </script>
 
 <template>
@@ -44,17 +79,22 @@ await getAllPermissions()
             <span class="text-xl text-gray-700">控制面板</span>
           </div>
           <div class="flex gap-4 bg-zinc-200 rounded-lg p-4 border-soild">
-            <img src="@renderer/assets/logo.jpg" class="w-20 h-20 rounded-full" draggable="false" />
+            <img
+              src="@renderer/assets/logo.jpg"
+              class="w-20 h-20 rounded-full"
+              draggable="false"
+              @click="checkWechaty" />
             <div class="flex flex-col justify-around">
-              <span>用户名：微信助手</span>
-              <span>登录时间：2024-02-12 12:23:34</span>
+              <span>用户名：123</span>
             </div>
           </div>
-          <div class="cursor-pointer text-center py-3 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white">
+          <div
+            class="cursor-pointer text-center py-3 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white"
+            @click="wechatyLogin">
             登录账号
           </div>
-          <!-- <img src="@renderer/assets/logo.jpg" class="rounded-lg h-[500px]" draggable="false" /> -->
-          <div class="bg-zinc-100 shadow-lg rounded-lg p-4 flex flex-col gap-4 h-auto" v-if="userPower">
+          <img :src="loginCode" class="rounded-lg h-[500px]" draggable="false" v-if="!isLogin" />
+          <div class="bg-zinc-100 shadow-lg rounded-lg p-4 flex flex-col gap-4 h-auto" v-if="userPower && isLogin">
             <div class="text-center opacity-80 text-base">权限管理</div>
             <div class="grid grid-cols-3 gap-4">
               <div class="flex gap-3 items-center justify-center">

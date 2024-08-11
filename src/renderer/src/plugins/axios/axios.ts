@@ -1,5 +1,3 @@
-import FingerprintJS from '@fingerprintjs/fingerprintjs'
-import useAuth from '@renderer/composables/useAuth'
 import useStorage from '@renderer/composables/useStorage'
 import { CacheEnum } from '@renderer/enum/CacheEnum'
 import { HttpCodeEnum } from '@renderer/enum/HttpCodeEnum'
@@ -24,7 +22,7 @@ export default class Axios {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.instance.request(config)
-        resolve(response.data)
+        resolve(response.data.data)
       } catch (error) {
         reject(error)
       }
@@ -61,6 +59,7 @@ export default class Axios {
           this.loading.close()
           this.loading = undefined
         }
+        console.log(response)
         const message = response.data?.success ?? response.data?.success
         if (message && this.options.message) {
           ElMessage({
@@ -96,14 +95,7 @@ export default class Axios {
             ElMessage({ type: 'error', message: '请求过于频繁，请稍候再试' })
             break
           case HttpCodeEnum.UNAUTHORIZED:
-            const storage = useStorage()
-            storage.remove(CacheEnum.TOKEN_NAME)
-            const { isLogin, login } = useAuth()
-            if (!isLogin()) {
-              const fp = await FingerprintJS.load()
-              const result = await fp.get()
-              await login(result.visitorId)
-            }
+            ElMessage({ type: 'error', message: 'token过期，重新登录' })
             break
           case HttpCodeEnum.UNPROCESSABLE_ENTITY:
             ElMessage({ type: 'error', message: '提交的内容不允许为空' })

@@ -23,16 +23,22 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
+    "@element-plus/icons-vue": "^2.3.1",
     "@fingerprintjs/fingerprintjs": "^4.4.3",
-    "@icon-park/vue": "^1.4.2",
     "@icon-park/vue-next": "^1.4.2",
+    "aws-sdk": "^2.1672.0",
     "axios": "^1.7.2",
     "dayjs": "^1.11.12",
+    "electron-conf": "^1.1.0",
     "electron-updater": "^6.1.7",
     "element-plus": "^2.7.8",
+    "esdk-obs-nodejs": "^3.24.3",
+    "etcd3": "^1.1.2",
+    "jimp": "^0.22.12",
     "pinia": "^2.2.0",
     "pinia-plugin-persistedstate": "^3.2.1",
-    "vue-router": "4"
+    "vue-router": "4",
+    "wechaty": "^1.20.2"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config": "^1.0.2",

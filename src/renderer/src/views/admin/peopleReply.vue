@@ -81,7 +81,7 @@ await getAllReplyList()
     </section>
     <section class="section_right">
       <div class="config">
-        <div class="font-bold text-black opacity-80 text-lg">配置管理{{ msgNumber }}</div>
+        <div class="font-bold text-black opacity-80 text-lg">配置管理</div>
         <el-form v-if="replyInfo && isEdit">
           <el-form-item label="方案名称">
             <el-input placeholder="请输入方案名称，最好不要重复" v-model="replyInfo.planName"></el-input>

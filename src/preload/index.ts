@@ -1,7 +1,17 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
-const api = {}
+const api = {
+  startBot: () => {
+    return ipcRenderer.invoke('startBot')
+  },
+  botStatus: () => {
+    return ipcRenderer.invoke('botStatus')
+  },
+  wechatyScan: (qrcode: any) => ipcRenderer.on('wechatyScan', qrcode),
+  wechatyLogin: (userInfo: any) => ipcRenderer.on('wechatyLogin', userInfo),
+  userBotOut: (callBack) => ipcRenderer.on('userBotOut', callBack),
+}
 if (process.contextIsolated) {
   try {
     contextBridge.exposeInMainWorld('electron', electronAPI)
