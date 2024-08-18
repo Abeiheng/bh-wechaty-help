@@ -19,7 +19,7 @@
 
 > 直接体验
 
-点击[立即下载体验](https://github.com/oddfar/notes)，下载程序，即可直接使用，如有不懂的地方可以提交issues，或者联系绿泡泡:bhsr922，备注来意。
+点击[立即下载体验](https://github.com/Abeiheng/bh-wechaty-help/releases)，下载最新版程序，即可直接使用，如有不懂的地方可以提交issues，或者联系绿泡泡:bhsr922，备注来意。
 
 > 自行部署
 
