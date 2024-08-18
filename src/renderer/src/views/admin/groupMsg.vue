@@ -66,6 +66,7 @@ const handleRound = async (item: GroupShareModel) => {
     return
   }
   window.api.sendMsg(item.id)
+  ElMessage({ message: '发送成功', type: 'success', duration: 1000 })
 }
 const { shareList, shareInfo, getAllShareList, createShare, getShareById, deleteShare, updateShare } = useGroupShare()
 const { getOnePermission } = usePermission()
