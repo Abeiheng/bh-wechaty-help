@@ -36,9 +36,9 @@ export default {
       meta: { auth: true },
     },
     {
-      path: '/makeApi',
-      name: 'makeApi',
-      component: () => import('@renderer/views/admin/makeApi.vue'),
+      path: '/msgLogs',
+      name: 'msgLogs',
+      component: () => import('@renderer/views/admin/msgLogs.vue'),
       meta: { auth: true },
     },
     {

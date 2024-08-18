@@ -5,6 +5,11 @@ const api = {
   startBot: () => {
     return ipcRenderer.invoke('startBot')
   },
+  sendMsg: (id: number) => {
+    console.log('玩呢')
+    console.log('sendMsg', id)
+    ipcRenderer.send('sendMsg', +id)
+  },
   botStatus: () => {
     return ipcRenderer.invoke('botStatus')
   },

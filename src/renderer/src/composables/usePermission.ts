@@ -4,6 +4,7 @@ import { ref } from 'vue'
 
 export default () => {
   const userPower = ref<UserPowerModel>()
+  const pageResult = ref<ApiPage<msgLogs>>()
   const getAllPermissions = async () => {
     userPower.value = await http.request<UserPowerModel>({
       url: '/permission/getAllPermissions',
@@ -18,5 +19,23 @@ export default () => {
     ElMessage({ message: res.message, type: 'success', duration: 1000 })
     getAllPermissions()
   }
-  return { getAllPermissions, userPower, updatePermission }
+  const getOnePermission = (type: string) => {
+    return http.request<boolean>({
+      url: '/permission/getOnePermission',
+      method: 'GET',
+      params: {
+        type,
+      },
+    })
+  }
+  const getAllLogs = async (page = 1) => {
+    pageResult.value = await http.request<ApiPage<msgLogs>>({
+      url: '/public/getAllLogs',
+      method: 'GET',
+      params: {
+        page,
+      },
+    })
+  }
+  return { getAllPermissions, userPower, updatePermission, getOnePermission, getAllLogs, pageResult }
 }

@@ -5,6 +5,7 @@ export default defineStore('user', {
   state: () => {
     return {
       user: undefined as UserModel | undefined,
+      wechatyStatus: false as boolean,
     }
   },
   actions: {
@@ -14,6 +15,10 @@ export default defineStore('user', {
           url: '/user/info',
         })
       }
+    },
+    async editStatus(status: boolean) {
+      this.wechatyStatus = status
+      console.log('editStatus', status,this.wechatyStatus)
     },
   },
 })

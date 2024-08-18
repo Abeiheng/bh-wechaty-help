@@ -6,6 +6,7 @@ declare global {
     electron: ElectronAPI
     api: {
       startBot: () => Promise<boolean>
+      sendMsg: (id: number) => void
       botStatus: () => boolean
       wechatyScan: (callBack: Function) => void
       wechatyLogin: (callBack: Function) => ContactSelfInterface

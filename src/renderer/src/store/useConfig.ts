@@ -8,5 +8,5 @@ export const useConfigStore = defineStore(
     })
     return { config }
   },
-  { persist: true }
+  { persist: true },
 )

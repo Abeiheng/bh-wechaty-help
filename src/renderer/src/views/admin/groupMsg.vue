@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { Dot, CloseOne, EditTwo, Ring } from '@icon-park/vue-next'
 import useGroupShare from '@renderer/composables/useGroupShare'
 import { ElMessage } from 'element-plus'
+import usePermission from '@renderer/composables/usePermission'
 const isEdit = ref(false)
 const msgNumber = ref(1)
 const shareForm = ref({
@@ -54,7 +55,20 @@ const handleClear = () => {
   msgNumber.value = 1
   isEdit.value = false
 }
+const handleRound = async (item: GroupShareModel) => {
+  const groupMsgStatus = await getOnePermission('groupMsg')
+  if (!groupMsgStatus) {
+    ElMessage({ message: '请前往首页打开群发消息开关', type: 'error', duration: 1000 })
+    return
+  }
+  if (!item.status) {
+    ElMessage({ message: '该方案未启动', type: 'error', duration: 1000 })
+    return
+  }
+  window.api.sendMsg(item.id)
+}
 const { shareList, shareInfo, getAllShareList, createShare, getShareById, deleteShare, updateShare } = useGroupShare()
+const { getOnePermission } = usePermission()
 await getAllShareList()
 </script>
 
@@ -73,7 +87,7 @@ await getAllShareList()
           </div>
           <div class="flex items-center gap-3">
             <edit-two theme="outline" size="18" fill="#409EFF" class="cursor-pointer" @click="handleEdit(item.id!)" />
-            <ring theme="outline" size="18" fill="#67C23A" class="cursor-pointer" />
+            <ring theme="outline" size="18" fill="#67C23A" class="cursor-pointer" @click="handleRound(item)" />
             <close-one theme="outline" size="18" fill="#F56C6C" class="cursor-pointer" @click="handleDel(item.id!)" />
           </div>
         </div>

@@ -6,7 +6,6 @@ const blackForm = ref({
   planName: '',
   listenRoom: '',
   listenType: [] as Array<string>,
-  blackMsg: '',
   status: false,
 })
 const isEdit = ref(false)
@@ -30,7 +29,6 @@ const handleClear = () => {
     planName: '',
     listenRoom: '',
     listenType: [] as Array<string>,
-    blackMsg: '',
     status: false,
   }
   isEdit.value = false

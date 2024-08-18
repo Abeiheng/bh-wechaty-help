@@ -35,8 +35,34 @@ export default {
         title: '群发消息',
       },
       {
-        routeName: 'makeApi',
-        title: '定制接口',
+        routeName: 'msgLogs',
+        title: '日志列表',
+      },
+    ],
+    msgLogs: [
+      {
+        routeName: 'friend',
+        title: '好友申请',
+      },
+      {
+        routeName: 'peopleReply',
+        title: '个人回复',
+      },
+      {
+        routeName: 'groupReply',
+        title: '群聊回复',
+      },
+      {
+        routeName: 'msgShare',
+        title: '消息转发',
+      },
+      {
+        routeName: 'blackWord',
+        title: '屏蔽检测',
+      },
+      {
+        routeName: 'groupMsg',
+        title: '群发消息',
       },
     ],
   },

@@ -11,9 +11,9 @@ export default class Axios {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.instance.request(config)
-        resolve(response.data.data)
+        resolve(response.data)
       } catch (error) {
-        reject(error)
+        console.log('报错了')
       }
     }) as Promise<T>
   }
@@ -24,16 +24,12 @@ export default class Axios {
   }
 
   private interceptorsRequest() {
-    this.instance.interceptors.request.use(
-      (config: InternalAxiosRequestConfig) => {
-        config.headers.Accept = 'application/json'
-        config.headers.Authorization = `Bearer ${useStorage().get('login_token')}`
-        return config
-      },
-      (error: any) => {
-        return Promise.reject(error)
-      },
-    )
+    this.instance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+      const storage = useStorage()
+      config.headers.Accept = 'application/json'
+      config.headers.Authorization = `Bearer ${storage.get('login_token')}`
+      return config
+    })
   }
   private interceptorsResponse() {
     this.instance.interceptors.response.use(
@@ -41,7 +37,7 @@ export default class Axios {
         return response
       },
       (error: any) => {
-        console.log(error)
+        console.log('报错了')
       },
     )
   }

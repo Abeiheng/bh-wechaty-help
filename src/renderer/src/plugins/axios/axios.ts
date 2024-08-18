@@ -22,7 +22,7 @@ export default class Axios {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await this.instance.request(config)
-        resolve(response.data.data)
+        resolve(response.data)
       } catch (error) {
         reject(error)
       }
@@ -59,7 +59,6 @@ export default class Axios {
           this.loading.close()
           this.loading = undefined
         }
-        console.log(response)
         const message = response.data?.success ?? response.data?.success
         if (message && this.options.message) {
           ElMessage({

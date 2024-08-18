@@ -74,11 +74,18 @@ interface BlackWord {
   planName: string
   listenRoom: string
   listenType: Array<string>
-  blackMsg: string
   status: boolean
   userId: number
   User: UserModel
 }
 interface MsgModel {
   message: string
+}
+interface msgLogs {
+  id: number
+  logContent: string
+  logType: string
+  createdAt: Date
+  updatedAt: Date
+  userId: number
 }

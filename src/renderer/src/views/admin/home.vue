@@ -1,52 +1,48 @@
 <script setup lang="ts">
 import usePermission from '@renderer/composables/usePermission'
-import useStorage from '@renderer/composables/useStorage'
-import { ElMessage } from 'element-plus'
-import { ref } from 'vue'
+import useUserStore from '@renderer/store/useUserStore'
+import { ElLoading } from 'element-plus'
+import { nextTick, ref } from 'vue'
 import { ContactSelfInterface } from 'wechaty/impls'
 const loginCode = ref('')
-const storage = useStorage()
-const isLogin = ref(false)
+const loading = ref()
+const store = useUserStore()
+const { editStatus } = useUserStore()
 const handlePermission = async () => {
   await updatePermission()
 }
 const wechatyLogin = async () => {
+  loading.value = ElLoading.service({
+    background: 'rgba(255,255,255,0.1)',
+    fullscreen: true,
+  })
   await window.api.startBot()
 }
 const checkWechaty = () => {
   window.api.botStatus()
 }
-const isLoginWechaty = async () => {
-  const wechatyIsLogin = storage.get('wechatyInfo')
-  if (wechatyIsLogin) {
-    isLogin.value = true
-    await getAllPermissions()
-  } else {
-    isLogin.value = false
-  }
-}
 window.api.wechatyScan((_event, qrcode: string) => {
-  console.log(qrcode)
-  if (qrcode) {
-    loginCode.value = qrcode
-  }
+  loginCode.value = qrcode
+  loading.value.close()
 })
 window.api.wechatyLogin(async (_event, userInfo: ContactSelfInterface) => {
   if (userInfo.id) {
-    await storage.set('wechatyInfo', userInfo)
-    ElMessage({ type: 'success', message: '机器人启动成功', duration: 2000 })
-    await isLoginWechaty()
+    await editStatus(true)
+    await getAllPermissions()
   }
 })
 const { getAllPermissions, userPower, updatePermission } = usePermission()
-await isLoginWechaty()
+nextTick(async () => {
+  checkWechaty()
+  await getAllPermissions()
+})
 </script>
 
 <template>
   <main class="main">
     <section>
       <div class="title">
-        <span>北恒帮帮助手</span>
+        <span>北恒帮帮助手{{ store.wechatyStatus }}</span>
       </div>
       <div class="content">
         <div class="leftContent">
@@ -79,22 +75,27 @@ await isLoginWechaty()
             <span class="text-xl text-gray-700">控制面板</span>
           </div>
           <div class="flex gap-4 bg-zinc-200 rounded-lg p-4 border-soild">
-            <img
-              src="@renderer/assets/logo.jpg"
-              class="w-20 h-20 rounded-full"
-              draggable="false"
-              @click="checkWechaty" />
+            <img src="@renderer/assets/logo.jpg" class="w-20 h-20 rounded-full" draggable="false" />
             <div class="flex flex-col justify-around">
-              <span>用户名：123</span>
+              <span>用户名：尊敬的使用者</span>
             </div>
           </div>
           <div
             class="cursor-pointer text-center py-3 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white"
-            @click="wechatyLogin">
+            @click="wechatyLogin"
+            v-if="!store.wechatyStatus">
             登录账号
           </div>
-          <img :src="loginCode" class="rounded-lg h-[500px]" draggable="false" v-if="!isLogin" />
-          <div class="bg-zinc-100 shadow-lg rounded-lg p-4 flex flex-col gap-4 h-auto" v-if="userPower && isLogin">
+          <div
+            class="cursor-pointer text-center py-3 rounded-lg bg-[#3a404b] shadow-sm nodrag text-white"
+            @click="checkWechaty"
+            v-else>
+            手动检测机器人状态
+          </div>
+          <img :src="loginCode" class="rounded-lg h-[500px]" draggable="false" v-if="!store.wechatyStatus" />
+          <div
+            class="bg-zinc-100 shadow-lg rounded-lg p-4 flex flex-col gap-4 h-auto"
+            v-if="userPower && store.wechatyStatus">
             <div class="text-center opacity-80 text-base">权限管理</div>
             <div class="grid grid-cols-3 gap-4">
               <div class="flex gap-3 items-center justify-center">
