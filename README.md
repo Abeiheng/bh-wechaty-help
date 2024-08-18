@@ -53,6 +53,12 @@
 
 可自定义群聊与发送内容，每次最多定义3条，设置完成之后点击方案列表绿色的小图标进行启动。
 
+
+## star 趋势图
+
+![Stargazers over time](https://starchart.cc/Abeiheng/bh-wechaty-help.svg)
+
+
 ## 贡献代码
 
 若您有好的想法，发现一些 **BUG** 并修复了，欢迎提交 **Pull Request** 参与开源贡献
