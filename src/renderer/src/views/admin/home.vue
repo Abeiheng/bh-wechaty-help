@@ -42,7 +42,7 @@ nextTick(async () => {
   <main class="main">
     <section>
       <div class="title">
-        <span>北恒帮帮助手{{ store.wechatyStatus }}</span>
+        <span>北恒帮帮助手</span>
       </div>
       <div class="content">
         <div class="leftContent">
@@ -77,7 +77,7 @@ nextTick(async () => {
           <div class="flex gap-4 bg-zinc-200 rounded-lg p-4 border-soild">
             <img src="@renderer/assets/logo.jpg" class="w-20 h-20 rounded-full" draggable="false" />
             <div class="flex flex-col justify-around">
-              <span>用户名：尊敬的使用者</span>
+              <span>尊敬的使用者,欢迎使用程序~</span>
             </div>
           </div>
           <div

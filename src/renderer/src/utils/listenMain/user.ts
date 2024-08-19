@@ -10,6 +10,8 @@ setTimeout(() => {
     } else if (status == 'login') {
       await editStatus(true)
       ElMessage({ type: 'success', message: '机器人正常运行中', duration: 2000 })
+    } else if (status == 'success') {
+      ElMessage({ type: 'success', message: '已发送完毕', duration: 2000 })
     }
   })
 }, 1000)

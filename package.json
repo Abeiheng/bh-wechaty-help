@@ -1,10 +1,10 @@
 {
-  "name": "wechatybot",
+  "name": "bh-wechaty-help",
   "version": "1.0.0",
-  "description": "An Electron application with Vue and TypeScript",
+  "description": "北恒微信助手，解放您的双手，多种方案可同时运行，亲测稳定运行24小时不掉线。",
   "main": "./out/main/index.js",
-  "author": "example.com",
-  "homepage": "https://electron-vite.org",
+  "author": "北恒",
+  "homepage": "https://bot.bhsr922.cn/",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.vue --fix",

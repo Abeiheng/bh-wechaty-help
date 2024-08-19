@@ -1,5 +1,5 @@
-appId: com.electron.app
-productName: wechatybot
+appId: cn.bhsr922.bot
+productName: bh-wechaty-help
 directories:
   buildResources: build
 files:
@@ -14,7 +14,7 @@ asarUnpack:
 win:
   executableName: wechatybot
 nsis:
-  artifactName: ${name}-${version}-setup.${ext}
+  artifactName: ${name}-${version}.${ext}
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always

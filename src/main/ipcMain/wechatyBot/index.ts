@@ -1,4 +1,4 @@
-import { BrowserWindow, ipcMain, IpcMainInvokeEvent } from 'electron'
+import { BrowserWindow, ipcMain, IpcMainEvent, IpcMainInvokeEvent } from 'electron'
 import { log, ScanStatus, WechatyBuilder } from 'wechaty'
 import usePermission from '../composables/usePermission'
 import { friendPlan } from './plugins/friendPlan'
@@ -96,8 +96,9 @@ ipcMain.handle('botStatus', async (event: IpcMainInvokeEvent) => {
   checkBotStatus(win)
 })
 
-ipcMain.on('sendMsg', async (_event, id: number) => {
-  await groupMsg(bot, id)
+ipcMain.on('sendMsg', async (event: IpcMainEvent, id: number) => {
+  const win = BrowserWindow.fromWebContents(event.sender)
+  await groupMsg(bot, id, win!)
 })
 
 const checkBotStatus = (win: BrowserWindow | null) => {

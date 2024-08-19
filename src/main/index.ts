@@ -12,7 +12,7 @@ function createWindow(): BrowserWindow {
     width: 1400,
     height: 900,
     show: false,
-    alwaysOnTop: true,
+    alwaysOnTop: false,
     resizable: false,
     frame: false,
     autoHideMenuBar: false,
