@@ -1,4 +1,4 @@
 import { App } from 'vue'
-const setup = (app: App) => {}
+const setup = (_app: App) => {}
 
 export { setup }

@@ -74,7 +74,7 @@ await getAllPlanList()
             placeholder="当好友申请通过自动向该好友发送一条文字消息。(为空则不发送)"
             :rows="5"
             type="textarea"
-            v-model="planInfo.callMsg"></el-input>
+            v-model="planInfo.callMsg" resize="none"></el-input>
         </el-form-item>
         <el-form-item label="是否启动">
           <el-switch v-model="planInfo.status" size="small" />
@@ -106,7 +106,7 @@ await getAllPlanList()
             placeholder="当好友申请通过自动向该好友发送一条文字消息。(为空则不发送)"
             :rows="5"
             type="textarea"
-            v-model="friendForm.callMsg"></el-input>
+            v-model="friendForm.callMsg" resize="none"></el-input>
         </el-form-item>
         <el-form-item label="是否启动">
           <el-switch v-model="friendForm.status" size="small" />

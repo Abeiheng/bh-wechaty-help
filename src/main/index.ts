@@ -1,6 +1,6 @@
-import { electronApp, is, optimizer } from '@electron-toolkit/utils'
+import { electronApp, optimizer } from '@electron-toolkit/utils'
 import { app, BrowserWindow, shell } from 'electron'
-import { join } from 'path'
+import path, { join } from 'path'
 import icon from '../../resources/icon.png?asset'
 import { createTray } from './tray'
 import './ipcMain'
@@ -36,10 +36,10 @@ function createWindow(): BrowserWindow {
     shell.openExternal(details.url)
     return { action: 'deny' }
   })
-  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+  if (!app.isPackaged && process.env['ELECTRON_RENDERER_URL']) {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
   } else {
-    mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
+    mainWindow.loadFile(path.join(__dirname, '../renderer/index.html'))
   }
   return mainWindow
 }

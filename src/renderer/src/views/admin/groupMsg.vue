@@ -109,28 +109,28 @@ await getAllShareList()
               placeholder="请输入需要发送的群聊昵称,每个群聊以#分割，如：咨询#请问#询问,群聊昵称禁止有符号"
               :rows="4"
               type="textarea"
-              v-model="shareInfo.sendRoom"></el-input>
+              v-model="shareInfo.sendRoom" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 1 || shareInfo.msgOne">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="shareInfo.msgOne"></el-input>
+              v-model="shareInfo.msgOne" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 2 || shareInfo.msgTwo">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="shareInfo.msgTwo"></el-input>
+              v-model="shareInfo.msgTwo" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 3 || shareInfo.msgThree">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="shareInfo.msgThree"></el-input>
+              v-model="shareInfo.msgThree" resize="none"></el-input>
           </el-form-item>
           <el-form-item>
             <div class="flex justify-end flex-1">
@@ -171,28 +171,28 @@ await getAllShareList()
               placeholder="请输入需要发送的群聊昵称,每个群聊以#分割，如：咨询#请问#询问,群聊昵称禁止有符号"
               :rows="4"
               type="textarea"
-              v-model="shareForm.sendRoom"></el-input>
+              v-model="shareForm.sendRoom" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 1">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="shareForm.msgOne"></el-input>
+              v-model="shareForm.msgOne" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 2">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="shareForm.msgTwo"></el-input>
+              v-model="shareForm.msgTwo" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 3">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="shareForm.msgThree"></el-input>
+              v-model="shareForm.msgThree" resize="none"></el-input>
           </el-form-item>
           <el-form-item>
             <div class="flex justify-end flex-1">

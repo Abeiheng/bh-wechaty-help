@@ -9,7 +9,7 @@ export default (router: Router) => {
 }
 
 //路由守卫
-async function beforeEach(to: RouteLocationNormalized, from: RouteLocationNormalized) {
+async function beforeEach(to: RouteLocationNormalized, _from: RouteLocationNormalized) {
   await init()
   if (to.meta.auth && !isLogin()) {
     const fp = await FingerprintJS.load()

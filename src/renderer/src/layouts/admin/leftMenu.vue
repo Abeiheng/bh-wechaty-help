@@ -4,7 +4,7 @@ import config from '@renderer/config'
 
 <template>
   <div class="main">
-    <img src="@renderer/assets/logo.jpg" class="logo" draggable="false"/>
+    <img src="@renderer/assets/logo.jpg" class="logo" draggable="false" />
     <div class="menuList">
       <div
         class="item"

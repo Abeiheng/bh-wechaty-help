@@ -8,7 +8,7 @@ export default class Axios {
   }
 
   public async request<T>(config: AxiosRequestConfig) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve) => {
       try {
         const response = await this.instance.request(config)
         resolve(response.data)
@@ -35,9 +35,6 @@ export default class Axios {
     this.instance.interceptors.response.use(
       (response): AxiosResponse => {
         return response
-      },
-      (error: any) => {
-        console.log('报错了')
       },
     )
   }

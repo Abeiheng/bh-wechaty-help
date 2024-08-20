@@ -72,7 +72,7 @@ await getAllPlanList()
               placeholder="请输入监听群聊昵称,每个群聊以#分割，如：咨询#请问#询问,群聊昵称禁止有符号"
               :rows="4"
               type="textarea"
-              v-model="planInfo.listenRoom"></el-input>
+              v-model="planInfo.listenRoom" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="监听条件">
             <el-checkbox-group v-model="planInfo.listenType">
@@ -108,7 +108,7 @@ await getAllPlanList()
               placeholder="请输入监听群聊昵称,每个群聊以#分割，如：咨询#请问#询问,群聊昵称禁止有符号"
               :rows="4"
               type="textarea"
-              v-model="blackForm.listenRoom"></el-input>
+              v-model="blackForm.listenRoom" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="监听条件">
             <el-checkbox-group v-model="blackForm.listenType">

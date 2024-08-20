@@ -47,7 +47,7 @@ await getAllShareList()
           v-for="(item, index) of shareList"
           :key="index">
           <div class="flex gap-1 items-center">
-            <dot theme="outline" size="18" :fill="item.status?'#67C23A':'#F56C6C'" />
+            <dot theme="outline" size="18" :fill="item.status ? '#67C23A' : '#F56C6C'" />
             <span class="text-gray-800 opacity-80">{{ item.planName }}</span>
           </div>
           <div class="flex items-center gap-3">
@@ -69,17 +69,18 @@ await getAllShareList()
           </el-form-item>
           <el-form-item label="监听群聊">
             <el-input
-              placeholder="请输入监听群聊昵称,每个群聊以#分割，如：咨询#请问#询问,群聊昵称禁止有符号，禁止套娃转发，以防封禁"
+              placeholder="请输入监听群聊昵称,每个群聊以#分割，如：群聊1群#群聊2群#测试群,群聊昵称禁止有符号，禁止套娃转发，以防封禁"
               :rows="4"
               type="textarea"
-              v-model="shareInfo.listenRoom"></el-input>
+              v-model="shareInfo.listenRoom"
+              resize="none"></el-input>
           </el-form-item>
           <el-form-item label="接收群聊">
             <el-input
               placeholder="请输入接收群聊昵称,每个群聊以#分割，如：咨询#请问#询问,群聊昵称禁止有符号，禁止套娃转发，以防封禁"
               :rows="4"
               type="textarea"
-              v-model="shareInfo.shareRoom"></el-input>
+              v-model="shareInfo.shareRoom" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="是否启动">
             <el-switch v-model="shareInfo.status" size="small" />
@@ -108,14 +109,14 @@ await getAllShareList()
               placeholder="请输入监听群聊昵称,每个群聊以#分割，如：咨询#请问#询问,群聊昵称禁止有符号，禁止套娃转发，以防封禁"
               :rows="4"
               type="textarea"
-              v-model="shareForm.listenRoom"></el-input>
+              v-model="shareForm.listenRoom" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="接收群聊">
             <el-input
               placeholder="请输入接收群聊昵称,每个群聊以#分割，如：咨询#请问#询问,群聊昵称禁止有符号，禁止套娃转发，以防封禁"
               :rows="4"
               type="textarea"
-              v-model="shareForm.shareRoom"></el-input>
+              v-model="shareForm.shareRoom" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="是否启动">
             <el-switch v-model="shareForm.status" size="small" />

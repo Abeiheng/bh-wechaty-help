@@ -91,28 +91,28 @@ await getAllReplyList()
               placeholder="请输入触发条件,每个条件以#分割，如：咨询#请问#询问"
               :rows="3"
               type="textarea"
-              v-model="replyInfo.triggerWord"></el-input>
+              v-model="replyInfo.triggerWord" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 1 || replyInfo.msgOne">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="replyInfo.msgOne"></el-input>
+              v-model="replyInfo.msgOne" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 2 || replyInfo.msgTwo">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="replyInfo.msgTwo"></el-input>
+              v-model="replyInfo.msgTwo" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 3 || replyInfo.msgThree">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="replyInfo.msgThree"></el-input>
+              v-model="replyInfo.msgThree" resize="none"></el-input>
           </el-form-item>
           <el-form-item>
             <div class="flex justify-end flex-1">
@@ -150,28 +150,28 @@ await getAllReplyList()
               placeholder="请输入触发条件,每个条件以#分割，如：咨询#请问#询问"
               :rows="3"
               type="textarea"
-              v-model="replyForm.triggerWord"></el-input>
+              v-model="replyForm.triggerWord" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 1">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="replyForm.msgOne"></el-input>
+              v-model="replyForm.msgOne" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 2">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="replyForm.msgTwo"></el-input>
+              v-model="replyForm.msgTwo" resize="none"></el-input>
           </el-form-item>
           <el-form-item label="消息回复" v-if="msgNumber >= 3">
             <el-input
               placeholder="当触发上面条件会依次执行回复(上限三条，支持纯文本以及文件)"
               :rows="2"
               type="textarea"
-              v-model="replyForm.msgThree"></el-input>
+              v-model="replyForm.msgThree" resize="none"></el-input>
           </el-form-item>
           <el-form-item>
             <div class="flex justify-end flex-1">

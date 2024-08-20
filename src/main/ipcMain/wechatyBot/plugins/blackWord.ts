@@ -43,13 +43,13 @@ const blackWord = async (
   if (messageType == 6) {
     const image = await message.toFileBox();
     const toBuffer = await image.toBuffer();
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       Jimp.read(toBuffer, (err: any, image: any) => {
         if (err) {
           resolve(false);
         }
         const qr = new QrCode();
-        qr.callback = async (err:any, value:any) => {
+        qr.callback = async (_err:any, value:any) => {
           if (value) {
             const result = await getMsgResult(
               "二维码",
@@ -64,5 +64,6 @@ const blackWord = async (
       });
     });
   }
+  return
 };
 export { blackWord };

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import routes from '@renderer/routes'
 import config from '@renderer/config'
 import guard from './guard'
@@ -12,7 +12,7 @@ routes.forEach((route) => {
 })
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
   scrollBehavior() {
     return { top: 0, behavior: 'smooth' }
